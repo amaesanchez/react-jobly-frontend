@@ -34,7 +34,7 @@ function JobList() {
       isLoading: true,
     });
   }
-
+  console.log("joblist", filter)
   if (jobs.isLoading) return <h1>Loading...</h1>;
 
   return (

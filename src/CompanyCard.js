@@ -4,7 +4,6 @@
  * @returns
  */
 function CompanyCard({ company }) {
-  console.log(company.logoUrl);
 
   return (
     <div className="CompanyCard">
