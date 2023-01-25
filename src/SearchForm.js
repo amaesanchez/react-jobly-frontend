@@ -10,7 +10,10 @@ import { useState } from "react";
  *
  * JobList/CompanyList -> SearchForm
  */
+// rename prop to be more intentional -- serachFor?
 function SearchForm({ getData }) {
+
+  // iniitial state can j be a string
   const initialState = {
     search: "",
   };
@@ -27,6 +30,7 @@ function SearchForm({ getData }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    // trim the formData --.trim()
     getData(formData.search);
     setFormData(initialState);
   }

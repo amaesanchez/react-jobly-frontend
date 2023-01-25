@@ -25,7 +25,7 @@ class JoblyApi {
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     const params = method === "get" ? data : {};
-
+    //TODO: look into line 34 -- whats the purpose
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
@@ -44,31 +44,21 @@ class JoblyApi {
     return res.company;
   }
 
-  // obviously, you'll add a lot here ...
-
   /** Get companies given filters. */
 
   static async getCompanies(filters) {
-    if (filters) {
-      const data = { nameLike: filters };
-      let res = await this.request(`companies`, data);
-      return res.companies;
-    }
+    const data = { nameLike: filters };
 
-    let res = await this.request(`companies`);
+    let res = await this.request(`companies`, data);
     return res.companies;
   }
 
   /** Get jobs given filters. */
 
   static async getJobs(filters) {
-    if (filters) {
-      const data = { title: filters };
-      let res = await this.request(`jobs`, data);
-      return res.jobs;
-    }
+    const data = { title: filters };
 
-    let res = await this.request(`jobs`);
+    let res = await this.request(`jobs`, data);
     return res.jobs;
   }
 }

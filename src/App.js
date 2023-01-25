@@ -21,5 +21,6 @@ function App() {
     </div>
   );
 }
+
 // bug with showing navbar -- install react-router-dom & pass in <component />
 export default App;

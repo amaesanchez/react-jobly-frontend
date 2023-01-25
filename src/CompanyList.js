@@ -5,6 +5,7 @@ import JoblyApi from "./api";
 
 import CompanyCard from "./CompanyCard";
 import SearchForm from "./SearchForm";
+import Loading from "./Loading";
 
 /** Render list of companies and search form
  *
@@ -16,53 +17,41 @@ import SearchForm from "./SearchForm";
  */
 
 function CompanyList() {
-  const [filter, setFilter] = useState(null);
-  const [companies, setCompanies] = useState({
-    companies: null,
-    isLoading: true,
-  });
+  // track companies instead of isLoading to render loading msg
+  const [companies, setCompanies] = useState(null);
 
-  useEffect(
-    function fetchCompanies() {
-      async function getCompaniesAPI() {
-        const companies = filter
-          ? await JoblyApi.getCompanies(filter)
-          : await JoblyApi.getCompanies();
+  // just calls getCompanies
+  useEffect(function fetchCompanies() {
+    getCompanies();
+  }, []);
 
-        console.debug("companies", companies);
-        setCompanies({
-          companies: companies,
-          isLoading: false,
-        });
-      }
-      getCompaniesAPI();
-    },
-    [filter]
-  );
-
-  function getCompanies(data) {
-    setFilter(data);
-    setCompanies({
-      companies: null,
-      isLoading: true,
-    });
+  // ajax request here instead
+  async function getCompanies(data) {
+    const companiesRes = await JoblyApi.getCompanies(data);
+    console.debug("companies", companiesRes);
+    setCompanies(companiesRes);
   }
 
-  if (companies.isLoading) return <h1>Loading...</h1>;
+  if (!companies) return <Loading />;
 
   return (
     <div className="CompanyList list">
       <h1>CompanyList here</h1>
       <SearchForm getData={getCompanies} />
       <div className="CompanyList-companies">
-        {companies.companies.map((company) => (
-          <Link
-            to={company.handle}
-            style={{ textDecoration: "none", color: "black" }}
-            key={uuid()}>
-            <CompanyCard company={company} />
-          </Link>
-        ))}
+        {companies.length === 0 ? (
+          <p>No companies found.</p>
+        ) : (
+          companies.map((company) => (
+            <Link
+              to={company.handle}
+              style={{ textDecoration: "none", color: "black" }}
+              key={uuid()}
+            >
+              <CompanyCard company={company} />
+            </Link>
+          ))
+        )}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import JoblyApi from "./api";
 
 import JobCardList from "./JobCardList";
 import SearchForm from "./SearchForm";
+import Loading from "./Loading";
 
 /** Render list of jobs
  *
@@ -12,46 +13,32 @@ import SearchForm from "./SearchForm";
  *
  * Routes -> JobList
  */
-
+// look at comments in company list
 function JobList() {
-  const [filter, setFilter] = useState(null);
-  const [jobs, setJobs] = useState({
-    jobs: null,
-    isLoading: true,
-  });
+  const [jobs, setJobs] = useState(null);
 
-  useEffect(
-    function fetchJobs() {
-      async function getJobsAPI() {
-        const jobs = await JoblyApi.getJobs(filter);
+  useEffect(function fetchJobs() {
+    getJobs();
+  }, []);
 
-        console.debug("jobs", jobs);
-        setJobs({
-          jobs: jobs,
-          isLoading: false,
-        });
-      }
-      getJobsAPI();
-    },
-    [filter]
-  );
-
-  function getJobs(data) {
-    setFilter(data);
-    setJobs({
-      jobs: null,
-      isLoading: true,
-    });
+  async function getJobs(data) {
+    const jobs = await JoblyApi.getJobs(data);
+    console.debug("jobs", jobs);
+    setJobs(jobs);
   }
 
-  if (jobs.isLoading) return <h1>Loading...</h1>;
+  if (!jobs) return <Loading />;
 
   return (
     <div className="JobList list">
       <h1>JobList here</h1>
       <SearchForm getData={getJobs} />
       <div className="JobList-jobs">
-        <JobCardList jobs={jobs.jobs} />
+        {jobs.length === 0 ? (
+          <p>No jobs found.</p>
+        ) : (
+          <JobCardList jobs={jobs} />
+        )}
       </div>
     </div>
   );

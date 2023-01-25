@@ -1,4 +1,3 @@
-
 /** Render job card
  *
  * Props
@@ -12,10 +11,20 @@ function JobCard({ job }) {
     <div className="JobCard card">
       <h4>{job.title}</h4>
       <p>{job.companyName}</p>
-      <p>Salary: {job.salary}</p>
-      <p>Equity: {job.equity}</p>
+      {job.salary ? (
+        <p>
+          Salary:{" "}
+          {job.salary.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          })}
+        </p>
+      ) : (
+        <></>
+      )}
+      {job.equity > 0 ? <p>Equity: {job.equity}</p> : <></>}
     </div>
-  )
+  );
 }
 
 export default JobCard;
