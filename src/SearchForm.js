@@ -1,9 +1,14 @@
 import { useState } from "react";
 
-/**
+/** Render search form
  *
- * @param {*} param0
- * @returns
+ * Props
+ * - getData - function to handle formData after submission
+ *
+ * State
+ * - formData - {search: ...}
+ *
+ * JobList/CompanyList -> SearchForm
  */
 function SearchForm({ getData }) {
   const initialState = {
@@ -22,7 +27,6 @@ function SearchForm({ getData }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log("handleSubmit", formData.search)
     getData(formData.search);
     setFormData(initialState);
   }
