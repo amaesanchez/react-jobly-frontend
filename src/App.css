@@ -43,5 +43,19 @@
 }
 
 .card {
-  background-color: bisque;
+  margin: 30px;
+}
+
+.card img {
+  width: 50px;
+}
+
+.LoginForm {
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.SignupForm {
+  margin-left: 30%;
+  margin-right: 30%;
 }

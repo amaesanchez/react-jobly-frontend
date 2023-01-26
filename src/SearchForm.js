@@ -3,7 +3,7 @@ import { useState } from "react";
 /** Render search form
  *
  * Props
- * - getData - function to handle formData after submission
+ * - searchFor - function to handle formData after submission
  *
  * State
  * - formData - {search: ...}
@@ -11,12 +11,8 @@ import { useState } from "react";
  * JobList/CompanyList -> SearchForm
  */
 // rename prop to be more intentional -- serachFor?
-function SearchForm({ getData }) {
-
-  // iniitial state can j be a string
-  const initialState = {
-    search: "",
-  };
+function SearchForm({ searchFor }) {
+  const initialState = "";
   const [formData, setFormData] = useState(initialState);
 
   function handleChange(evt) {
@@ -30,20 +26,22 @@ function SearchForm({ getData }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    // trim the formData --.trim()
-    getData(formData.search);
+    searchFor(formData.search.trim());
     setFormData(initialState);
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="search"
-        onChange={handleChange}
-        value={formData.search}
-        placeholder="Enter search term..."
-      ></input>
-      <button>Search</button>
+    <form className="SearchForm d-flex justify-content-center" onSubmit={handleSubmit}>
+      <div className="d-flex justify-content-center col-5">
+        <input
+          name="search"
+          className="form-control"
+          onChange={handleChange}
+          value={formData.search}
+          placeholder="Enter search term..."
+        ></input>
+        <button type="submit" className="SearchFormBtn btn btn-primary">Search</button>
+      </div>
     </form>
   );
 }

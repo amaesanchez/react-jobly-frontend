@@ -31,8 +31,8 @@ function JobList() {
 
   return (
     <div className="JobList list">
-      <h1>JobList here</h1>
-      <SearchForm getData={getJobs} />
+      <h1>Jobs</h1>
+      <SearchForm searchFor={getJobs} />
       <div className="JobList-jobs">
         {jobs.length === 0 ? (
           <p>No jobs found.</p>

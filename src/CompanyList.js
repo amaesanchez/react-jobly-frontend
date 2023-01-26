@@ -36,8 +36,8 @@ function CompanyList() {
 
   return (
     <div className="CompanyList list">
-      <h1>CompanyList here</h1>
-      <SearchForm getData={getCompanies} />
+      <h1>Companies</h1>
+      <SearchForm searchFor={getCompanies} />
       <div className="CompanyList-companies">
         {companies.length === 0 ? (
           <p>No companies found.</p>
