@@ -30,22 +30,24 @@ function CompanyList() {
   if (!companies) return <Loading />;
 
   return (
-    <div className="CompanyList list mt-4">
-      <SearchForm searchFor={getCompanies} />
-      <div className="CompanyList-companies">
-        {companies.length === 0 ? (
-          <p>No companies found.</p>
-        ) : (
-          companies.map((company) => (
-            <Link
-              to={company.handle}
-              style={{ textDecoration: "none", color: "black" }}
-              key={uuid()}
-            >
-              <CompanyCard company={company} />
-            </Link>
-          ))
-        )}
+    <div className="CompanyList d-flex justify-content-center mt-4">
+      <div className="col-lg-8 col-12">
+        <SearchForm searchFor={getCompanies} />
+        <div className="CompanyList-companies">
+          {companies.length === 0 ? (
+            <p>No companies found.</p>
+          ) : (
+            companies.map((company) => (
+              <Link
+                to={company.handle}
+                style={{ textDecoration: "none", color: "black" }}
+                key={uuid()}
+              >
+                <CompanyCard company={company} />
+              </Link>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

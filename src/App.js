@@ -21,7 +21,6 @@ const LOCAL_STORAGE_TOKEN_KEY = "token";
  *
  * App -> NavBar/RoutesList
  */
-//TODO: username in navbar, firstname in homepage
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
@@ -29,6 +28,7 @@ function App() {
     localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
   );
   const [isLoading, setIsLoading] = useState(true);
+  const [toggleApply, setToggleApply] = useState(false);
 
   async function handleLogin(data) {
     const token = await JoblyApi.loginUser(data);
@@ -53,6 +53,12 @@ function App() {
     setCurrUser(prevInfo => ({...prevInfo, ...newUserInfo}))
   }
 
+  async function handleApply(id) {
+    await JoblyApi.applyToJob(currUser.username, id);
+    setToggleApply(prev => !prev)
+    console.log("currUser", currUser.applications)
+  }
+
   function handleToken(token) {
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
     setIsLoading(true);
@@ -73,14 +79,14 @@ function App() {
         setIsLoading(false);
       }
     },
-    [currToken]
+    [currToken, toggleApply]
   );
 
   if (isLoading) return <Loading />;
-  console.log("currUser", currUser)
+
   return (
     <div className="App">
-      <userContext.Provider value={{ currUser }}>
+      <userContext.Provider value={{ currUser, handleApply }}>
         <BrowserRouter>
           <NavBar handleLogout={handleLogout} />
           <RoutesList

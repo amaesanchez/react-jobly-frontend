@@ -51,23 +51,12 @@
   color: orange;
 }
 
-/** Lists  */
-.list {
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
-/** Cards  */
-.card {
-  margin: 30px;
-}
-
+/** Card styling */
 .card img {
   width: 50px;
 }
 
-/** Forms */
-.userforms {
-  margin-left: 30%;
-  margin-right: 30%;
+/** Form styling */
+.form-header {
+  text-shadow: 2px 2px 6px gray
 }

@@ -16,28 +16,26 @@ function SearchForm({ searchFor }) {
   const [formData, setFormData] = useState(initialState);
 
   function handleChange(evt) {
-    const { name, value } = evt.target;
-
-    setFormData((formData) => ({
-      ...formData,
-      [name]: value,
-    }));
+    const { value } = evt.target;
+    setFormData(value);
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    searchFor(formData.search.trim());
+    if (formData.length === 0) {
+      return;
+    }
+    searchFor(formData.trim());
     setFormData(initialState);
   }
-
   return (
     <form className="SearchForm d-flex justify-content-center" onSubmit={handleSubmit}>
-      <div className="d-flex justify-content-center col-5">
+      <div className="col-5 d-flex">
         <input
           name="search"
-          className="form-control"
+          className="form-control me-2"
           onChange={handleChange}
-          value={formData.search}
+          value={formData}
           placeholder="Enter search term..."
         ></input>
         <button type="submit" className="SearchFormBtn btn btn-primary">Search</button>

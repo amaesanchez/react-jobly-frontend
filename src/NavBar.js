@@ -35,7 +35,7 @@ function NavBar({ handleLogout }) {
         </li>
         <li className="nav-item">
           <NavLink to="/profile">
-            <div className="navbar-link me-2">{currUser.username}</div>
+            <div className="navbar-link me-2"><b>{currUser.username}</b></div>
           </NavLink>
         </li>
         <li onClick={logOutUser} className="nav-item">

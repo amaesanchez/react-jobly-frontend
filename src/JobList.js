@@ -28,14 +28,16 @@ function JobList() {
   if (!jobs) return <Loading />;
 
   return (
-    <div className="JobList list mt-4">
-      <SearchForm searchFor={getJobs} />
-      <div className="JobList-jobs">
-        {jobs.length === 0 ? (
-          <p>No jobs found.</p>
-        ) : (
-          <JobCardList jobs={jobs} />
-        )}
+    <div className="JobList d-flex justify-content-center mt-4">
+      <div className="col-lg-8 col-12">
+        <SearchForm searchFor={getJobs} />
+        <div className="JobList-jobs">
+          {jobs.length === 0 ? (
+            <p>No jobs found.</p>
+          ) : (
+            <JobCardList jobs={jobs} />
+          )}
+        </div>
       </div>
     </div>
   );

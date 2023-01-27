@@ -47,56 +47,66 @@ function Profile({ handleUpdate }) {
   }
 
   return (
-    <div className="ProfileForm userforms justify-content-center">
-      <h1>Profile</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          {err && <Alerts err={err} />}
-          {isUpdated && (
-            <Alerts success={["Profile has been successfully updated."]} />
-          )}
-          <label htmlFor="username">Username</label>
-          <input
-            disabled
-            onChange={handleChange}
-            type="text"
-            className="form-control"
-            id="username"
-            name="username"
-            value={currUser.username}
-          />
-          <label htmlFor="firstName">First name</label>
-          <input
-            onChange={handleChange}
-            type="text"
-            className="form-control"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-          />
-          <label htmlFor="lastName">Last name</label>
-          <input
-            onChange={handleChange}
-            type="text"
-            className="form-control"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            onChange={handleChange}
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            value={formData.email}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+    <div className="ProfileForm d-flex justify-content-center p-3">
+      <div className="col-lg-4 col-12">
+        <h1 className="form-header">Profile</h1>
+        <form onSubmit={handleSubmit} className="bg-light rounded p-3">
+          <div className="form-group">
+            {err && <Alerts err={err} />}
+            {isUpdated && (
+              <Alerts success={["Profile has been successfully updated."]} />
+            )}
+            <label className="d-flex float-left m-2" htmlFor="username">
+              <b>Username</b>
+            </label>
+            <input
+              disabled
+              onChange={handleChange}
+              type="text"
+              className="form-control"
+              id="username"
+              name="username"
+              value={currUser.username}
+            />
+            <label className="d-flex float-left m-2" htmlFor="firstName">
+              <b>First name</b>
+            </label>
+            <input
+              onChange={handleChange}
+              type="text"
+              className="form-control"
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+            />
+            <label className="d-flex float-left m-2" htmlFor="lastName">
+              <b>Last name</b>
+            </label>
+            <input
+              onChange={handleChange}
+              type="text"
+              className="form-control"
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
+            />
+            <label className="d-flex float-left m-2" htmlFor="email">
+              <b>Email</b>
+            </label>
+            <input
+              onChange={handleChange}
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              value={formData.email}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary mt-3">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { Button } from "react-bootstrap";
+import { useContext, useState } from "react";
 import userContext from "./userContext";
 
 /** Render job card
@@ -13,10 +14,13 @@ import userContext from "./userContext";
 // should i prop drill handleApply()
 // should the state for apply/applied be held here
 function JobCard({ job }) {
-  const { currUser } = useContext(userContext);
+  const { handleApply, currUser } = useContext(userContext);
 
+  function handleApplyToJob(evt) {
+    handleApply(job.id);
+  }
   return (
-    <div className="JobCard card bg-light p-2">
+    <div className="JobCard bg-light rounded p-2 m-3">
       <h4>{job.title}</h4>
       <p>{job.companyName}</p>
       <p>
@@ -28,7 +32,16 @@ function JobCard({ job }) {
             })
           : "Salary not available."}
       </p>
-      {job.equity > 0 ? <p>Equity: {job.equity}</p> : <></>}
+      {job.equity > 0 && <p>Equity: {job.equity}</p>}
+      <div>
+        <button
+          className="btn btn-primary"
+          onClick={handleApplyToJob}
+          disabled={currUser.applications.includes(job.id)}
+        >
+          {currUser.applications.includes(job.id) ? "Applied" : "Apply"}
+        </button>
+      </div>
     </div>
   );
 }
