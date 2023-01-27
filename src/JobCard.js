@@ -1,5 +1,4 @@
-import { Button } from "react-bootstrap";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import userContext from "./userContext";
 
 /** Render job card
