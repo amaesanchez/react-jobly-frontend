@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import userContext from "./userContext";
+
 /** Render job card
  *
  * Props
@@ -6,8 +9,12 @@
  * JobCardList -> JobCard
  */
 
-//TODO: have applied button 
+//TODO: have applied button
+// should i prop drill handleApply()
+// should the state for apply/applied be held here
 function JobCard({ job }) {
+  const { currUser } = useContext(userContext);
+
   return (
     <div className="JobCard card bg-light p-2">
       <h4>{job.title}</h4>
