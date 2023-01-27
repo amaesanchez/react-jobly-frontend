@@ -18,6 +18,7 @@ const LOCAL_STORAGE_TOKEN_KEY = "token";
  * - currUser - {username, firstName, lastName, email, isAdmin, applications: []}
  * - currToken - string
  * - isLoading - boolean
+ * - toggleApply - boolean
  *
  * App -> NavBar/RoutesList
  */

@@ -34,13 +34,15 @@ function CompanyDetails() {
 
   return (
     <div className="CompanyDetails list mt-4">
-      <h1>{company.name}</h1>
-      <p>{company.description}</p>
-      {company.jobs ? (
-        <JobCardList jobs={company.jobs} />
-      ) : (
-        <p>No jobs available.</p>
-      )}
+      <div className="col-lg-8 col-12">
+        <h1>{company.name}</h1>
+        <p>{company.description}</p>
+        {company.jobs ? (
+          <JobCardList jobs={company.jobs} />
+        ) : (
+          <p>No jobs available.</p>
+        )}
+      </div>
     </div>
   );
 }
