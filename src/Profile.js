@@ -50,6 +50,9 @@ function Profile({ handleUpdate }) {
     <div className="ProfileForm d-flex justify-content-center p-3">
       <div className="col-lg-4 col-12">
         <h1 className="form-header">Profile</h1>
+        <div>
+          <h4>Applications sent: {currUser.applications.length}</h4>
+        </div>
         <form onSubmit={handleSubmit} className="bg-light rounded p-3">
           <div className="form-group">
             {err && <Alerts err={err} />}
