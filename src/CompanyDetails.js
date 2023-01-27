@@ -33,7 +33,7 @@ function CompanyDetails() {
   if (!company) return <Loading />;
 
   return (
-    <div className="CompanyDetails list mt-4">
+    <div className="CompanyDetails list d-flex justify-content-center mt-4">
       <div className="col-lg-8 col-12">
         <h1>{company.name}</h1>
         <p>{company.description}</p>
