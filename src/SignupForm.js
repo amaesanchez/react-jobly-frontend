@@ -1,13 +1,28 @@
 
-import { useContext, useState, Navigate } from "react";
-import JoblyApi from "./api";
-import Errors from "./Errors";
+import { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
+import Alerts from "./Alerts";
 import userContext from "./userContext";
 
+/** Render signup form and navigate to homepage on successful sign up
+ * else show errors
+ *
+ * Context
+ * - currUser - obj with user info
+ *
+ * Props
+ * - handleRegister() - from app
+ *
+ * State
+ * - formData - {username, password, firstName, lastName, email}
+ * - err - null or array of msgs
+ *
+ * RoutesList -> SignupForm -> Errors
+ */
+function SignupForm({ handleRegister }) {
+  const { currUser } = useContext(userContext);
 
-function SignupForm({ handleToken }) {
-  const user = useContext(userContext);
-
+  // default inputs to remove late
   const initialState = {
     username: "",
     password: "",
@@ -30,24 +45,22 @@ function SignupForm({ handleToken }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let resp;
     try {
-      resp = await JoblyApi.registerUser(formData)
+      await handleRegister(formData);
     } catch (err) {
       setErr(err)
     }
-    handleToken(resp.token);
     setFormData(initialState);
   }
 
-  if (user) return <Navigate to={"/"}/>
+  if (currUser) return <Navigate to={"/"}/>
 
   return (
-    <div className="SignupForm justify-content-center">
+    <div className="SignupForm userforms justify-content-center">
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          {err ? <Errors err={err} /> : <></>}
+          {err && <Alerts err={err} />}
           <label htmlFor="username">Username</label>
           <input
             onChange={handleChange}

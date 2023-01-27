@@ -8,7 +8,6 @@ import Loading from "./Loading";
 /** Render list of jobs
  *
  * State
- * - filter - set by search form submission
  * - jobs - holds job objects and isLoading state
  *
  * Routes -> JobList
@@ -23,15 +22,13 @@ function JobList() {
 
   async function getJobs(data) {
     const jobs = await JoblyApi.getJobs(data);
-    console.debug("jobs", jobs);
     setJobs(jobs);
   }
 
   if (!jobs) return <Loading />;
 
   return (
-    <div className="JobList list">
-      <h1>Jobs</h1>
+    <div className="JobList list mt-4">
       <SearchForm searchFor={getJobs} />
       <div className="JobList-jobs">
         {jobs.length === 0 ? (

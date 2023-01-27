@@ -37,11 +37,27 @@
   }
 }
 
+/** NavBar */
+.navbar a {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: darkgoldenrod;
+}
+
+.navbar a.active {
+  color: orange;
+}
+
+/** Lists  */
 .list {
   margin-left: 100px;
   margin-right: 100px;
 }
 
+/** Cards  */
 .card {
   margin: 30px;
 }
@@ -50,12 +66,8 @@
   width: 50px;
 }
 
-.LoginForm {
-  margin-left: 30%;
-  margin-right: 30%;
-}
-
-.SignupForm {
+/** Forms */
+.userforms {
   margin-left: 30%;
   margin-right: 30%;
 }

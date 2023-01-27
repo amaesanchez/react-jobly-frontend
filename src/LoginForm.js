@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
-import JoblyApi from "./api";
-import Errors from "./Errors";
+import Alerts from "./Alerts";
 import userContext from "./userContext";
 
 
 /** Render login form and navigate to homepage on successful login
  * else show errors
+ *
+ * Context
+ * - currUser - obj with user info
  *
  * Props
  * - handleLogin() - from app
@@ -18,11 +20,12 @@ import userContext from "./userContext";
  * RoutesList -> LoginForm -> Errors
  */
 function LoginForm({ handleLogin }) {
-  const user = useContext(userContext);
+  const { currUser } = useContext(userContext);
 
+  // default inputs to remove later
   const initialState = {
-    username: "",
-    password: ""
+    username: "testuser",
+    password: "password"
   };
   const [formData, setFormData] = useState(initialState)
   const [err, setErr] = useState(null)
@@ -41,21 +44,20 @@ function LoginForm({ handleLogin }) {
     evt.preventDefault();
     try {
       await handleLogin(formData);
-      console.log("Loginform", formData)
     } catch (err) {
       setErr(err)
     }
     setFormData(initialState);
   }
 
-  if (user) return <Navigate to={"/"}/>
+  if (currUser) return <Navigate to={"/"}/>
 
   return (
-    <div className="LoginForm justify-content-center">
+    <div className="LoginForm userforms justify-content-center">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          {err ? <Errors err={err} /> : <></>}
+          {err && <Alerts err={err} />}
           <label htmlFor="username">Username</label>
           <input
             onChange={handleChange}

@@ -6,6 +6,7 @@
  * JobCardList -> JobCard
  */
 
+//TODO: have applied button 
 function JobCard({ job }) {
   return (
     <div className="JobCard card bg-light p-2">

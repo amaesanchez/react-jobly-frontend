@@ -33,7 +33,7 @@ function CompanyDetails() {
   if (!company) return <Loading />;
 
   return (
-    <div className="CompanyDetails list">
+    <div className="CompanyDetails list mt-4">
       <h1>{company.name}</h1>
       <p>{company.description}</p>
       {company.jobs ? (

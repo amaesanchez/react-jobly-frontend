@@ -5,7 +5,7 @@
  */
 function Loading() {
   return (
-    <h1>Loading...</h1>
+    <h1 className="mt-5">Loading...</h1>
   )
 }
 

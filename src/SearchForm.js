@@ -10,7 +10,7 @@ import { useState } from "react";
  *
  * JobList/CompanyList -> SearchForm
  */
-// rename prop to be more intentional -- serachFor?
+
 function SearchForm({ searchFor }) {
   const initialState = "";
   const [formData, setFormData] = useState(initialState);
