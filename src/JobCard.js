@@ -3,6 +3,9 @@ import userContext from "./userContext";
 
 /** Render job card
  *
+ * Context
+ * -handleApply, currUser
+ *
  * Props
  * - job - {companyHandle, companyName, equity, id, salary, title}
  *
