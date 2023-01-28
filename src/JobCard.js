@@ -12,13 +12,11 @@ import userContext from "./userContext";
  * JobCardList -> JobCard
  */
 
-//TODO: have applied button
-// should i prop drill handleApply()
-// should the state for apply/applied be held here
-function JobCard({ job }) {
+function JobCard({ job, notify }) {
   const { handleApply, currUser } = useContext(userContext);
 
   function handleApplyToJob(evt) {
+    notify(job.title)
     handleApply(job.id);
   }
   return (

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import JoblyApi from "./api";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import JobCardList from "./JobCardList";
 import SearchForm from "./SearchForm";
@@ -25,17 +27,22 @@ function JobList() {
     setJobs(jobs);
   }
 
+  function notify(jobName) {
+    toast(`You have applied for position: ${jobName}`);
+  }
+
   if (!jobs) return <Loading />;
 
   return (
     <div className="JobList d-flex justify-content-center mt-4">
+      <ToastContainer />
       <div className="col-lg-8 col-12">
         <SearchForm searchFor={getJobs} />
         <div className="JobList-jobs">
           {jobs.length === 0 ? (
             <p>No jobs found.</p>
           ) : (
-            <JobCardList jobs={jobs} />
+            <JobCardList jobs={jobs} notify={notify}/>
           )}
         </div>
       </div>

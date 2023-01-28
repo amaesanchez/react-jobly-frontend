@@ -8,11 +8,11 @@ import { v4 as uuid } from "uuid";
  *
  * JobList/companyDetails -> JobCardList
  */
-function JobCardList({ jobs }) {
+function JobCardList({ jobs, notify }) {
   return (
     <>
       {jobs.map((job) => (
-        <JobCard key={uuid()} job={job} />
+        <JobCard key={uuid()} job={job} notify={notify}/>
       ))}
     </>
   );
