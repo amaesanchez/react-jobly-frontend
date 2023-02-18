@@ -56,6 +56,10 @@
   width: 50px;
 }
 
+.Logo {
+  height: 40px;
+}
+
 /** Form styling */
 .form-header {
   text-shadow: 2px 2px 6px gray

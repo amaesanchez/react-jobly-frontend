@@ -16,6 +16,7 @@ function JobCard({ job, notify }) {
   const { handleApply, currUser } = useContext(userContext);
 
   function handleApplyToJob(evt) {
+    console.log("hello")
     notify(job.title)
     handleApply(job.id);
   }

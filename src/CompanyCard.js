@@ -12,7 +12,7 @@ function CompanyCard({ company }) {
       <div className="d-flex justify-content-between">
         <h4>{company.name}</h4>
         {company.logoUrl ? (
-          <img className="rounded" src={company.logoUrl} alt={`${company.name}`}></img>
+          <img className="Logo rounded" src={company.logoUrl} alt={`${company.name}`}></img>
         ) : (
           <></>
         )}
