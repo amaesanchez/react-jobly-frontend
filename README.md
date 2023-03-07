@@ -1,6 +1,7 @@
 # Getting Started with Jobly
 
 Deployed on: asanchez-jobly.surge.sh
+*Please be patient on load
 
 To access backend codebase: https://github.com/amaesanchez/express-jobly-backend.git
 
