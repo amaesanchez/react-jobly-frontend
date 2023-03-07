@@ -2,6 +2,8 @@
 
 Deployed on: asanchez-jobly.surge.sh
 
+To access backend codebase: https://github.com/amaesanchez/express-jobly-backend.git
+
 ### To run the app in development mode:
 
 `npm start`
