@@ -1,6 +1,8 @@
 # Getting Started with Jobly
 
-Deployed on: asanchez-jobly.surge.sh
+Deployed on: asanchez-jobly.surge.sh  
+User: guest  
+Password: password  
 
 *Please be patient on load
 
