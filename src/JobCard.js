@@ -38,9 +38,9 @@ function JobCard({ job, notify }) {
         <button
           className="btn btn-primary"
           onClick={handleApplyToJob}
-          disabled={currUser.applications.includes(job.id)}
+          disabled={currUser.jobs.includes(job.id)}
         >
-          {currUser.applications.includes(job.id) ? "Applied" : "Apply"}
+          {currUser.jobs.includes(job.id) ? "Applied" : "Apply"}
         </button>
       </div>
     </div>

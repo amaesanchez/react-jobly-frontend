@@ -15,7 +15,7 @@ const LOCAL_STORAGE_TOKEN_KEY = "token";
 /** Render Jobly application
  *
  * State
- * - currUser - {username, firstName, lastName, email, isAdmin, applications: []}
+ * - currUser - {username, firstName, lastName, email, isAdmin, jobs: []}
  * - currToken - string
  * - isLoading - boolean
  * - toggleApply - boolean
@@ -57,7 +57,7 @@ function App() {
   async function handleApply(id) {
     await JoblyApi.applyToJob(currUser.username, id);
     setToggleApply(prev => !prev)
-    console.log("currUser", currUser.applications)
+    console.log("currUser", currUser.jobs)
   }
 
   function handleToken(token) {

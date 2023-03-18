@@ -24,11 +24,11 @@ Auth Notes
     - handleUpdate(data)
         - data = {username, firstName, lastName, email}
         - patch user info given username via JoblyApi -> returns { username, firstName, lastName, email, isAdmin }
-        - when setting currUser, spread the prev data and then add the new data (bc the old user obj should include applications key)
+        - when setting currUser, spread the prev data and then add the new data (bc the old user obj should include jobs key)
 
     - handleApply(jobid)
         - apply to job via JoblyApi (given username and id) -> returns job id
-        - set currUser to add id to applications list
+        - set currUser to add id to jobs list
 
 - LoginForm
     - State:

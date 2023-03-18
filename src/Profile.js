@@ -51,7 +51,7 @@ function Profile({ handleUpdate }) {
       <div className="col-lg-4 col-12">
         <h1 className="form-header">Profile</h1>
         <div>
-          <h4>Applications sent: {currUser.applications.length}</h4>
+          <h4>Applications sent: {currUser.jobs.length || 0}</h4>
         </div>
         <form onSubmit={handleSubmit} className="bg-light rounded p-3">
           <div className="form-group">
