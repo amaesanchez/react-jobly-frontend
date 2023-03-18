@@ -7,7 +7,7 @@ Password: password**
 
 *Please be patient on load
 
-To access backend codebase: https://github.com/amaesanchez/express-jobly-backend.git
+To access backend codebase: https://github.com/amaesanchez/express-jobly-BE.git
 
 ## Local Setup
 
