@@ -12,6 +12,7 @@ To access backend codebase: https://github.com/amaesanchez/express-jobly-backend
 ## Local Setup
 
 1. Install dependencies and run app.
+
     ```
     npm i
     npm start
