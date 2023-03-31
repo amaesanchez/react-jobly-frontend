@@ -1,11 +1,10 @@
 # Getting Started with Jobly
 Job application platform with authentication/authorization features.
 
+**Note: Takes ~10 secs upon login to load**  
 Deployed on: asanchez-jobly.surge.sh  
 **User: guest  
 Password: password**  
-
-*Please be patient on load
 
 To access backend codebase: https://github.com/amaesanchez/express-jobly-BE.git
 
